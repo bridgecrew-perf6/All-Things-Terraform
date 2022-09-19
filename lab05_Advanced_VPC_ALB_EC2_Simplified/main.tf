@@ -31,7 +31,6 @@ resource "aws_subnet" "lab04-public-subnet" {
 
 # Creates the private subnet 1 and 2
 resource "aws_subnet" "lab04-private-subnet" {
-  map_public_ip_on_launch = true
   vpc_id                  = aws_vpc.lab04-vpc.id
   count                   = length(var.avail_zones)
   cidr_block              = cidrsubnet(var.cidr_block, 8, count.index + length(var.avail_zones))
